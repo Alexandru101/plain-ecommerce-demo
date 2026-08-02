@@ -32,13 +32,14 @@ app.use("/api", getProducts);
 app.use("/api", newsletter);
 app.use("/api", test); // Remove this in production, this is only for testing //
 
+// Server Initialization //
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`App listening on port [http://localhost:${PORT}]`);
+});
+
 // Connecting MongoDB //
 mongoose.connect(process.env.MONGO_URI).then(() => {
     console.log("MongoDB connected succesffully");
-
-    app.listen(PORT, () => {
-        console.log(`App listening on port [http://localhost:${PORT}]`);
-    });
 }).catch((err) => {
     console.log(`MongoDB connection failed: ${err.message}`); 
 });

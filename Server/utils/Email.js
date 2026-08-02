@@ -200,7 +200,7 @@ export async function sendNewsletterVerification(email, token) {
 };
 
 export async function emailTemplate(email, token, title, desc) {
-    const UNSUBSCRIBE_URL = `${process.env.PORT}/api/newsletter-unsubscribe?token=${token}`;
+    const UNSUBSCRIBE_URL = `${process.env.BACKEND_URL}/api/newsletter-unsubscribe?token=${token}`;
 
     try {
         await resend.emails.send({
@@ -212,8 +212,6 @@ export async function emailTemplate(email, token, title, desc) {
                 "List-Unsubscribe-Post": "List-Unsubscribe=One-Click"
             },
             html: `
-                API can be tested with the command: curl -X POST "http://localhost:3000/api/newsletter-unsubscribe?token=${token}"
-
                 <div style="background-color:#0b0b0b;padding:40px 20px;font-family:Arial,Helvetica,sans-serif;">
                     <div style="
                         max-width:600px;

@@ -83,6 +83,13 @@ router.post("/newsletter-subscribe", async (req, res) => {
         await subscriber.save();
 
         // Sending email verification //
+        if (!email || !token) {
+            console.log("Email or token not found, cannot send verification email.");
+        } else {
+            await sendNewsletterVerification(email, token);
+            console.log(`Verification email sent to ${email} with token: ${token}`);
+        }
+        
         await sendNewsletterVerification(email, token);
 
         res.status(201).json({

@@ -14,5 +14,7 @@
     "rate-limiter-flexible": "^11.2.0",
     "redis": "^6.1.0",
     "resend": "^6.17.2"
-  }
+  },
+  
+  type: "module"
 }

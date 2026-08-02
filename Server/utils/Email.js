@@ -67,6 +67,7 @@ export async function sendResetPasswordLink(email, token) {
 
 export async function sendNewsletterVerification(email, token) {
     const FRONTEND_URL = `${process.env.FRONTEND_URL}/newsletter-email-verification?token=${token}`;
+    console.log("FRONTEND_URL:", FRONTEND_URL);
 
     try {
         await resend.emails.send({

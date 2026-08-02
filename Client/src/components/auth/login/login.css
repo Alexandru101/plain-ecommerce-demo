@@ -1,0 +1,227 @@
+#hero {
+    margin-top: 6.25rem;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#header {
+    height: 13rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 5px;
+}
+
+#header-title {
+    font-family: "Playfair Display", sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+#header-desc {
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+#cards-container {
+    height: 30rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.card {
+    height: 100%;
+    width: 27rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: white;
+    padding: 60px;
+
+    gap: 20px;
+}
+
+.card-title {
+    width: 100%;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.card-desc {
+    width: 100%;
+
+    font-size: 13px;
+    opacity: 0.7;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+#card-benefits-container {
+    width: 100%;
+    margin-top: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    gap: 15px;
+}
+
+.card-benefits-frame {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card-benefits-frame-icon {
+    height: 100%;
+    width: 15%;
+
+    display: flex;
+    align-items: center;
+    
+    font-size: 25px;
+    color: #808080;
+}
+
+.card-benefits-frame-text {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.card-button {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 5px;
+
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card-button button {
+    height: 3rem;
+    width: 60%;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    cursor: pointer;
+    color: white;
+    border: 1px solid #000;
+    background: #10223df1;
+
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+
+.card-button button:hover {
+    transform: scale(1.001);
+    color: #000;
+    background: #F0F0F0;
+}
+
+.card-button-frame {
+    margin-top: 0.31rem;
+    width: 100%;
+    opacity: 0.7;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.card-button-frame span {
+    width: 100%;
+
+    font-size: 10px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card-button-frame input {
+    height: 2.5rem;
+    width: 100%;
+
+    font-weight: bold;
+    font-size: 15px;
+
+    border: 1px solid #ccc;
+    outline: none;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.card-button-frame input:focus {
+    box-shadow: 0 0 10px #c4c4c45e;
+}
+
+.card-password-reset-text {
+    position: relative;
+    bottom: 0.5rem;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 15px;
+    font-weight: 800;
+    color: #101736;
+
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 6px;
+
+    transition: text-decoration-color 0.25s ease-in-out;
+}
+
+.card-password-reset-text:hover {
+    text-decoration-color: currentColor;
+}

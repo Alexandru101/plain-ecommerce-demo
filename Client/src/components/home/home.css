@@ -1,0 +1,285 @@
+/* --------- */
+/* container */
+/*---------- */
+
+#home-container {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 7rem;
+}
+
+#hero-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(90%);
+
+    z-index: 1;
+}
+
+/* ------------------------- */
+/* Home landing page display */
+/* ------------------------- */
+
+#home-heading {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    overflow: hidden;
+    z-index: 2;
+}
+
+#home-heading-container {
+    height: 50%;
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1.5rem;
+    z-index: 2;
+}
+
+#home-heading-title {
+    font-family: "Playfair Display", sans-serif;
+    font-size: 3.7rem;
+    color: white;
+}
+
+#home-heading-description {
+    font-size: 1.1rem;
+    color: white;
+}
+
+#home-heading-buttons {
+    height: 3rem;
+    width: 100%;
+    margin-top: 7rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.home-heading-button {
+    height: 100%;
+    width: 30%;
+
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1.5px solid white;
+    border-radius: 5px;
+
+    background: #a0a0a04b;
+    color: white;
+    cursor: pointer;
+
+    transition: all 0.15s ease-in-out;
+}
+
+.home-heading-button:hover {
+    border: 1.5px solid black;
+    background: #ffffffb0;
+    color: black;
+
+    transform: scale(1.015);
+}
+
+.hero-text {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+
+    text-align: center;
+    color: #000000fd;
+    font-size: 20px;
+    font-family: "Caveat Brush";
+
+    padding: 20px;
+    z-index: 2;
+}
+
+.scroll-line {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 0.094rem;
+    height: 1.25rem;
+    background: rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    z-index: 3;
+}
+
+.scroll-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    background: white;
+
+    animation: fillDown 3.5s ease-in-out infinite;
+    z-index: 4;
+}
+
+@keyframes fillDown {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    50% {
+        transform: translateY(0%);
+    }
+
+    70% {
+        transform: translateY(0%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+/* ------------ */
+/* Home Content */
+/* ------------ */
+
+#home-content {
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.home-section {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+}
+
+.home-section-title {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    word-spacing: 1.3px;
+
+    gap: 0.2rem;
+}
+
+.home-section-content {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 2rem;
+}
+
+.home-section-content-card {
+    min-height: 25rem;
+    min-width: 18rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.home-section-content-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.home-section-content-card-image {
+    height: 22rem;
+    max-width: 20rem;
+    object-fit: cover;
+    display: block;
+}
+
+.home-section-content-card-desc {
+    height: 40%;
+    width: 100%;
+
+    padding-top: 0.5rem;
+    font-weight: 500;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+    gap: 0.3rem;
+}
+
+.home-section-content-card-desc-stars {
+    padding-top: 0.8rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 15px;
+    gap: 0.15rem;
+}
+
+/* ------ */
+/* Extras */
+/* ------ */
+
+.divider {
+    height: 0.125rem;
+    width: 5rem;
+    border: none;
+    background: black;
+}

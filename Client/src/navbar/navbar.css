@@ -1,0 +1,105 @@
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6.25rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    z-index: 1000;
+    padding: 1.25rem;
+
+    background: #F0F0F0;
+
+    transition: transform 0.2s ease;
+}
+
+#navbar.homepage {
+    background: transparent;
+}
+
+#navbar.hidden {
+    transform: translateY(-100%);
+}
+
+#navbar.homepage::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 0;
+
+    background: #F0F0F0;
+    transition: height 0.2s ease;
+}
+
+#navbar.homepage:hover::before {
+    height: 100%;
+}
+
+#navbar > * {
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.navbar-side.right {
+    justify-content: flex-end;
+}
+
+#navbar-logo {
+    top: 7px;
+
+    flex: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 7px;
+}
+
+#navbar-logo img {
+    height: 2.5rem;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+#navbar-logo-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    gap: 15px;
+    padding: 10px;
+}
+
+#navbar span {
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#navbar span:hover {
+    color: #5f5f5f;
+    cursor: pointer;
+    border-bottom: 1px solid #5f5f5f;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: inherit;
+}

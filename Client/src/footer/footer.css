@@ -1,0 +1,261 @@
+/* ---- */
+/* Main */
+/* ---- */
+
+#footer {
+    bottom: 0;
+    width: 100%;
+    height: 45rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 10rem;
+    z-index: 1000;
+}
+
+.footer-heading {
+    font-size: 1.05rem;
+    font-weight: bold;
+}
+
+.footer-text {
+    font-size: 0.9375rem;
+}
+
+/* --------- */
+/* Container */
+/* --------- */
+
+#footer-container {
+    height: 75%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    border-top: 1px solid #0202025d;
+    gap: 7rem;
+    padding: 3rem 5rem;
+}
+
+/* -------------------- */
+/* Footer brand section */
+/* -------------------- */
+
+#footer-brand {
+    height: 100%;
+    width: 28rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+ 
+    gap: 0.5rem;
+}
+
+#footer-brand-title {
+    font-size: 5rem;
+    font-weight: 500px;
+    letter-spacing: 25px;
+}
+
+#footer-brand-desc {
+    height: 80%;
+    width: 100%;
+    font-size: 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    gap: 0.15rem;
+}
+
+/* ----------------------- */
+/* Footer brand newsletter */
+/* ----------------------- */
+
+#footer-newsletter {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    gap: 0.25rem;
+}
+
+#footer-newsletter-form {
+    margin-top: 1.25rem;
+    height: 3.5rem;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#footer-newsletter input {
+    height: 100%;
+    width: 60%;
+
+    font-size: 16px;
+    outline: none;
+
+    border: 1px solid #0000005d;
+    border-right: none;
+
+    padding: 0.5rem;
+}
+
+#footer-newsletter button {
+    height: 100%;
+    width: 40%;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    color: white;
+    background: #000;
+    border: none;
+
+    cursor: pointer;
+    transition: background 0.1s ease-in-out;
+}
+
+#footer-newsletter button:active {
+    background: #00000065;
+    border: 1px solid #000;
+}
+
+/* ------------------- */
+/* Footer brand quotes */
+/* ------------------- */
+
+#footer-brand-quotes {
+    padding-top: 2rem;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#footer-brand-quotes div {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    gap: 1.5rem;
+}
+
+#footer-brand-quotes div span {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* ------------------------ */
+/* Footer section container */
+/* ------------------------ */ 
+
+.footer-section {
+    height: 100%;
+    width: 20rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    gap: 2rem;
+    padding: 3rem 1rem;
+}
+
+.footer-section-title {
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.footer-section a {
+    text-decoration: none;
+    cursor: pointer;
+
+    color: black;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.footer-section a:hover {
+    color: #1b34c4;
+}
+
+.footer-media-container {
+    height: 5rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1.25rem;
+}
+
+.footer-media-container .social-icon {
+    width: 20%;
+} 
+
+.footer-media-container a {
+    width: 80%;
+
+    font-size: 20px;
+    letter-spacing: 0.5px;
+}
+
+/* ----- */
+/* Extra */
+/* ----- */
+
+#footer-extra {
+    margin-bottom: 1rem;
+    height: 15%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: 1px solid #020202b4;
+    padding: 0 5rem;
+}
+
+#footer-extra div {
+    height: 100%;
+    width: 33.33%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 2rem;
+    padding: 1rem;
+}
+
+#footer-extra div span {
+    font-size: 16px;
+}

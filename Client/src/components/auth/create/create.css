@@ -1,0 +1,158 @@
+#hero {
+    margin-top: 6.25rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#header {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+}
+
+#header-title {
+    font-family: "Playfair Display", sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+#header-desc {
+    font-size: 15px;
+    opacity: 0.8;
+    text-align: center;
+}
+
+#header-contact-frame {
+    height: 3rem;
+    width: 100%;
+
+    font-size: 15px;
+    color: #000000b9;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.5px solid #c9c9c9;
+    
+    padding: 5px;
+    gap: 4px;
+}
+
+#header-contact-frame a {
+    text-decoration: none;
+    color: #000000b9;
+}
+
+#header-contact-frame a:hover {
+    cursor: pointer;
+    color: #000399c2;
+    text-decoration: underline;
+}
+
+#registration {
+    margin-top: 3rem;
+    height: 40rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.registration-container {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.registration-field {
+    height: 5rem;
+    width: 48%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    gap: 10px;
+}
+
+.registration-field-title {
+    font-size: 13px;
+    color: #000000b9;
+}
+
+.registration-field-input {
+    height: 100%;
+
+    font-size: 17px;
+    outline: none;
+
+    padding: 10px;
+}
+
+.registration-field-input:focus {
+    box-shadow: 0 0 10px #c4c4c45e;
+}
+
+.registration-field-dropdown {
+    height: 100%;
+    font-size: 17px;
+    color: #000000b9;
+    
+    border: 1px solid #a19f9f93;
+    outline: none;
+    background: white;
+
+    padding: 10px;
+}
+
+#registration-button-container {
+    height: 100%;
+    width: 100%;
+
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#registration-button {
+    height: 3rem;
+    width: 100%;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    cursor: pointer;
+    color: white;
+    border: 1px solid #000;
+    background: #10223df1;
+
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+
+#registration-button:hover {
+    transform: scale(1.001);
+    color: #000;
+    background: #F0F0F0;
+}
+

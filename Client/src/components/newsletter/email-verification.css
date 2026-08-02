@@ -1,0 +1,52 @@
+#newsletter-hero {
+    margin-top: 6.25rem;
+    height: 40rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1.5rem;
+}
+
+#newsletter-title {
+    font-size: 40px;
+    letter-spacing: 0.5px;
+}
+
+#newsletter-desc {
+    width: 25rem;
+    text-align: center;
+    font-size: 16px;
+    overflow-wrap: break-word;
+}
+
+#newsletter-button {
+    margin-top: 1rem;
+    height: 3.5rem;
+    width: 17rem;
+
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+
+    border: 1px solid #000;
+    color: white;
+    background: #10223df1;
+
+    transition: all 0.2s ease-in-out;
+}
+
+#newsletter-button:hover {
+    transform: scale(1.001);
+    color: #000;
+    background: #ececec;
+}
+
+#newsletter-info {
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.7;
+}

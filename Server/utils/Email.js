@@ -195,8 +195,6 @@ export async function sendNewsletterVerification(email, token) {
             `
         })
     } catch(err) {
-        console.log(err);
-
         throw err;
     }
 };

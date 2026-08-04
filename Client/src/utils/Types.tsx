@@ -1,5 +1,6 @@
 export type FetchRequestInfo = {
     // Not Required //
+    method?: "GET" | "POST",
     headers?: Record<string, string>;
     body?: Record<string, any> | null;
 };

@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaRegStar, FaStarHalfAlt, FaStar } from "react-icons/fa";
+import ApiClient from "../../utils/ApiClient.tsx";
 import "./home.css";
 
 // Images //
@@ -37,17 +38,11 @@ export default function Home() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch(GET_PRODUCTS_API, {
-                    method: "GET",
-                    headers: { "Content-Type": "application/json" },
-                });
+                const data = await ApiClient.get<{ success: boolean, products: Product[] }>(GET_PRODUCTS_API);
 
-                const data = await response.json();
                 if (data.success) {
                     setProducts(data.products);
                 }
-
-                console.log(data);
             } catch(err) {
                 console.error(`Error fetching products: ${err}`);
             }

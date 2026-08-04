@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { captchaSDK } from "../../../utils/FriendlyCaptchaSDK";
 import { emitNotification } from "../../../utils/Notification";
+import ApiClient from "../../../utils/ApiClient.tsx";
 import "./reset-password.css";
 
 const RESET_PASSWORD_API = `${import.meta.env.VITE_BACKEND_PORT}/api/reset-password`;
@@ -52,17 +53,10 @@ export default function ResetPassword() {
         if (!captchaID) return;
 
         try {
-            const response = await fetch(RESET_PASSWORD_API, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    password: newPassword,
-                    captchaID,
-                    token
-                })
+            const data = await ApiClient.post<{ success: boolean, message: string }>(RESET_PASSWORD_API, {
+                body: { password: newPassword, captchaID, token }
             });
-
-            const data = await response.json();
+            
             if (data.success) {
                 emitNotification({
                     type: "success",

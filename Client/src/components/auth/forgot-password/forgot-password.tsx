@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { captchaSDK } from "../../../utils/FriendlyCaptchaSDK";
 import { emitNotification } from "../../../utils/Notification";
+import ApiClient from "../../../utils/ApiClient.tsx";
 import "./forgot-password.css";
 
 const SEND_EMAIL_API = `${import.meta.env.VITE_BACKEND_PORT}/api/forgot-password`;
@@ -38,15 +39,10 @@ export default function ForgotPassword() {
         if (!captchaID) return;
 
         try {
-            const response = await fetch(SEND_EMAIL_API, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email: email.trim(), captchaID })
-            })
-
-            const data = await response.json();
-            console.log(data);
-
+            const data = await ApiClient.post(SEND_EMAIL_API, {
+                body: { email: email.trim(), captchaID }
+            });
+            
             if (data.success) {
                 emitNotification({ 
                     type: "info",

@@ -1,3 +1,9 @@
+export type FetchRequestInfo = {
+    // Not Required //
+    headers?: Record<string, string>;
+    body?: Record<string, any> | null;
+};
+
 export type Product = {
     // Object ID //
     _id: string,

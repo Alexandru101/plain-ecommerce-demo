@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { captchaSDK } from "../../../utils/FriendlyCaptchaSDK";
 import { emitNotification } from "../../../utils/Notification";
+import ApiClient from "../../../utils/ApiClient.tsx";
 import "./create.css";
 
 const REGISTRATION_API = `${import.meta.env.VITE_BACKEND_PORT}/api/registration`;
@@ -55,13 +56,9 @@ export default function Create() {
         if (password !== confirmPassword) return;
 
         try {
-            const response = await fetch(REGISTRATION_API, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, gender, firstName, lastName, password, captchaID })
+            const data = await ApiClient.post<{ success: boolean, message: string }>(REGISTRATION_API, {
+                body: { email, gender, firstName, lastName, password, captchaID }
             });
-
-            const data = await response.json();
 
             if (data.success) {
                 emitNotification({

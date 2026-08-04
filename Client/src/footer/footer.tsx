@@ -1,6 +1,7 @@
 // Utils //
 import { useState, useEffect } from "react";
 import { emitNotification } from "../utils/Notification";
+import ApiClient from "../utils/ApiClient";
 import "./footer.css";
 
 // Icons //
@@ -23,13 +24,10 @@ export default function Footer() {
         e.preventDefault();
 
         try {
-            const response = await fetch(NEWSLETTER_SUBSCRIBE_API, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email: email.trim().toLowerCase() })
+            const data = await ApiClient.post<{ success: boolean, message: string }>(NEWSLETTER_SUBSCRIBE_API, {
+                body: { email: email.trim().toLowerCase() }
             });
 
-            const data = await response.json();
             if (data.success) {
                 emitNotification({
                     type: "success",

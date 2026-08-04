@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { captchaSDK } from "../../../utils/FriendlyCaptchaSDK";
 import { useNavigate } from "react-router-dom";
 import { emitNotification } from "../../../utils/Notification";
+import ApiClient from "../../../utils/ApiClient.tsx";
 import "./login.css";
 
 // Icons //
@@ -45,14 +46,9 @@ export default function Login() {
         if (!captchaID) return;
 
         try {
-            const response = await fetch(AUTHENTICATION_API, {
-                method: "POST",
-                credentials: "include",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password, captchaID })
+            const data = await ApiClient.post<{ success: boolean, message: string}>(AUTHENTICATION_API, {
+                body: { email, password, captchaID }
             });
-
-            const data = await response.json();
             
             if (data.success) {
                 emitNotification({

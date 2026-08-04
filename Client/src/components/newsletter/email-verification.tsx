@@ -1,7 +1,7 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { emitNotification } from "../../utils/Notification";
+import ApiClient from "../../utils/ApiClient.tsx";
 import "./email-verification.css";
-import { emit } from "node:cluster";
 
 // Backend API //
 const VERIFY_EMAIL_API = `${import.meta.env.VITE_BACKEND_PORT}/api/newsletter-verify-email`;
@@ -27,23 +27,9 @@ export default function NewsletterEmailVerification() {
         }
 
         try {
-            const response = await fetch(VERIFY_EMAIL_API, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ token })
+            const data = await ApiClient.post(VERIFY_EMAIL_API, {
+                body: { token }
             });
-
-            const data = await response.json();
-            
-            if (!response.ok) {
-                emitNotification({
-                    type: "alert",
-                    message: data.message || "Verification failed.",
-                    duration: 6000
-                });
-
-                return;
-            }
 
             if (data.success) {
                 emitNotification({

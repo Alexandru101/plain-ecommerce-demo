@@ -2,6 +2,7 @@
 import express from "express";
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 // Utils //
 import { ERROR_CODES } from "../utils/ErrorCodes.js";
@@ -11,6 +12,32 @@ import user from "../models/User.js";
 
 // Router //
 const router = express.Router();
+
+// Rate Limiters //
+const RATE_LIMIT_TYPES = Object.freeze({
+    AUTHENTICATION: "authentication",
+    REFRESH: "refresh"
+});
+
+async function checkRateLimiter(req, res, RATE_LIMIT_TYPE) {
+    try {
+        const userKey = `rate-limit:${RATE_LIMIT_TYPE}:${req.ip}`;
+        await rateLimiter.consume(userKey);
+
+        return true;
+    } catch(err) {
+        if (err.msBeforeNext) {
+            res.status(429).json({
+                success: false,
+                message: "Too many requests, please try again later."
+            });
+
+            return false;
+        };
+
+        throw err;
+    }
+}
 
 // Captcha Verification //
 const verifyCaptcha = async (captchaID) => {
@@ -32,19 +59,8 @@ const verifyCaptcha = async (captchaID) => {
 router.post("/authentication", async (req, res) => {
     try {
         // Checking if the user is rate limited //
-        try {
-            const userIP = req.ip;
-            const userKey = `rate-limit:authentication:${userIP}`;
-            await rateLimiter.consume(userKey);
-        } catch(err) {
-            if (err.msBeforeNext) {
-                return res.status(429).json({
-                    success: false,
-                    message: "Too many requests, please try again later."
-                });
-            }
-
-            throw err;
+        if (!(await checkRateLimiter(req, res, RATE_LIMIT_TYPES.AUTHENTICATION))) {
+            return;
         }
 
         // Grabbing user request //
@@ -126,10 +142,66 @@ router.post("/authentication", async (req, res) => {
 });
 
 router.post("/refresh", async (req, res) => {
+    try {
+        // Checking if user is rate limited //
+        if (!(await checkRateLimiter(req, res, RATE_LIMIT_TYPES.REFRESH))) {
+            return;
+        }
 
-    // -------------------------------------- //
-    // Next complete refresh token logic here //
-    // -------------------------------------- //
-})
+        // Grabbing refresh token and verifying it //
+        const refreshToken = req.cookies.refreshToken;
+        if (!refreshToken) {
+            return res.status(401).json({
+                success: false,
+                message: "Refresh token not found"
+            });
+        }
+
+        let payload;
+
+        try {
+            payload = jwt.verify(
+                refreshToken,
+                process.env.JWT_REFRESH_TOKEN_SECRET
+            );
+        } catch(err) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid or expired refresh token"
+            });
+        }
+
+        // Quering database to find user //
+        const existingUser = await user.findById(payload.userId);
+        if (!existingUser) {
+            return res.status(401).json({
+                success: false,
+                message: "Refresh token invalid"
+            });
+        }
+
+        // Generating new access token //
+        const newAccessToken = generateAccessToken(existingUser);
+
+        res.cookie("accessToken", newAccessToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "strict",
+            maxAge: 15 * 60 * 1000 // 15 minutes
+        });
+
+        return res.status(200).json({
+            success: true,
+            message: "Access token refreshed successfully"
+        });
+    } catch(err) {
+        console.error(err);
+
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error"
+        });
+    }
+});
 
 export default router;

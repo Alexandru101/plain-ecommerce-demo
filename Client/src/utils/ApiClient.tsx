@@ -1,5 +1,6 @@
 // Types //
 import { FetchRequestInfo as ReqInfo } from "./Types";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_PORT;
 
 // Fetching API //
 function fetchApi(url: string, requestInfo: ReqInfo): Promise<Response> {
@@ -15,7 +16,9 @@ async function request<T>(url: string, requestInfo: ReqInfo): Promise<T> {
     let response = await fetchApi(url, requestInfo);
 
     if (response.status === 401) {
-        await refreshAccessToken();
+        if (!(await refreshAccessToken())) {
+            throw new Error("Failed to refresh access token");
+        }
 
         response = await fetchApi(url, requestInfo);
         if (!response.ok) {
@@ -41,11 +44,13 @@ async function POST<T>(url: string, requestInfo: ReqInfo): Promise<T> {
 
 // Refreshing access token using refresh token //
 async function refreshAccessToken() {
+    const response = await fetch(`${BACKEND_URL}/api/refresh`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: undefined // Not required as the refresh token is sent via cookies
+    });
 
-    // ------------------------------------------ //
-    // Next implement refresh token logic here    //
-    // and complete backend API for refresh token //
-    // ------------------------------------------ //
+    return response.ok;
 };
 
 // Creating API Client Object //

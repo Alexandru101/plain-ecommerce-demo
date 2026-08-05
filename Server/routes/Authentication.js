@@ -125,4 +125,11 @@ router.post("/authentication", async (req, res) => {
     }
 });
 
+router.post("/refresh", async (req, res) => {
+
+    // -------------------------------------- //
+    // Next complete refresh token logic here //
+    // -------------------------------------- //
+})
+
 export default router;

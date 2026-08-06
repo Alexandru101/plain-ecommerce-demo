@@ -1,0 +1,65 @@
+.account {
+    margin-top: 6.25rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.account__header {
+    margin-top: 3rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    gap: 0.3125rem;
+}
+
+.account__title {
+    font-family: "Playfair Display", sans-serif;
+    font-size: 2.1875rem;
+    font-weight: bold;
+}
+
+.account__description {
+    font-size: 0.9375rem;
+}
+
+.account__settings {
+    margin-top: 2rem;
+    width: 60%;
+
+    display: flex;
+    gap: 1.25rem;
+
+    border: 1px solid #000;
+}
+
+.account__panel {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #000;
+}
+
+.account__content {
+    flex: 3;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1.25rem;
+
+    border: 1px solid #000;
+}

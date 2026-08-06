@@ -18,7 +18,7 @@ export default function Navbar() {
             const scrollY = window.scrollY;
             const lastY = lastScrollY.current;
 
-            setPageScrolled(scrollY > 600);
+            setPageScrolled(scrollY > 900);
             setHidden(scrollY > lastY);
             lastScrollY.current = scrollY;
         };
@@ -29,7 +29,7 @@ export default function Navbar() {
 
     // Navbar Styling //
     return (
-        <nav id="navbar" className={`${(isHomepage && lastScrollY.current < 800) ? "homepage" : ""} ${hidden ? "hidden" : ""}`}>
+        <nav id="navbar" className={`${(isHomepage && !pageScrolled) ? "homepage" : ""} ${hidden ? "hidden" : ""}`}>
             <div className="navbar-side left">
                 <Link to="/home">
                     <span>Home</span>

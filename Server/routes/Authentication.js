@@ -151,10 +151,7 @@ router.post("/refresh", async (req, res) => {
         // Grabbing refresh token and verifying it //
         const refreshToken = req.cookies.refreshToken;
         if (!refreshToken) {
-            return res.status(401).json({
-                success: false,
-                message: "Refresh token not found"
-            });
+            return res.sendStatus(401); // Token not found
         }
 
         let payload;
@@ -165,19 +162,13 @@ router.post("/refresh", async (req, res) => {
                 process.env.JWT_REFRESH_TOKEN_SECRET
             );
         } catch(err) {
-            return res.status(401).json({
-                success: false,
-                message: "Invalid or expired refresh token"
-            });
+            return res.sendStatus(401); // Token invalid or expired
         }
 
         // Quering database to find user //
         const existingUser = await user.findById(payload.userId);
         if (!existingUser) {
-            return res.status(401).json({
-                success: false,
-                message: "Refresh token invalid"
-            });
+            return res.sendStatus(401);
         }
 
         // Generating new access token //
@@ -190,17 +181,11 @@ router.post("/refresh", async (req, res) => {
             maxAge: 15 * 60 * 1000 // 15 minutes
         });
 
-        return res.status(200).json({
-            success: true,
-            message: "Access token refreshed successfully"
-        });
+        return res.status(200);
     } catch(err) {
         console.error(err);
 
-        return res.status(500).json({
-            success: false,
-            message: "Internal server error"
-        });
+        return res.sendStatus(500);
     }
 });
 

@@ -65,7 +65,7 @@ export default function Navbar() {
                     <span>Search</span>
                 </Link>
 
-                <Link to="/login">
+                <Link to="/account">
                     <span>Account</span>
                 </Link>
 

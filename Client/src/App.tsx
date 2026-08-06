@@ -13,6 +13,7 @@ import Footer from "./footer/footer.tsx";
 import Home from "./components/home/home.tsx";
 import Reviews from "./components/reviews/reviews.tsx";
 import ExclusiveOffers from "./components/exclusive-offers/exclusive-offers.tsx";
+import Account from "./components/account/account.tsx";
 import Search from "./components/search/search.tsx";
 import Cart from "./components/cart/cart.tsx";
 
@@ -56,6 +57,7 @@ export default function App() {
 
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/exclusive-offers" element={<ExclusiveOffers />} />
+            <Route path="/account" element={<Account />} />
             <Route path="/search" element={<Search />} />
 
             {/* Login / Signup / Forgot-Reset Password */}
@@ -75,7 +77,3 @@ export default function App() {
     </Router>
   )
 }
-
-// ---------------------------------- //
-// Next work on deploying the project //
-// ---------------------------------- //

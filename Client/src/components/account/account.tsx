@@ -2,44 +2,55 @@
 import { useState } from "react";
 import "./account.css";
 
+// Icons //
+import { FaUser } from "react-icons/fa"; 
+
 // Types //
 const accountTabs = {
     overview: {
+        icon: FaUser,
         text: "Account Overview",
         content: <Overview />
     },
 
     orders: {
+        icon: FaUser,
         text: "Orders",
         content: <NoContentTemplate />
     },
     
     wishlist: {
+        icon: FaUser,
         text: "Wishlist",
         content: <NoContentTemplate />
     },
     
     addresses: {
+        icon: FaUser,
         text: "Addresses",
         content: <NoContentTemplate />
     },
 
     payment: {
+        icon: FaUser,
         text: "Payment Methods",
         content: <NoContentTemplate />
     },
     
     refunds: {
+        icon: FaUser,
         text: "Return & Refunds",
         content: <NoContentTemplate />
     },
     
     changePassword: {
+        icon: FaUser,
         text: "Change Password",
         content: <NoContentTemplate />
     },
     
     logout: {
+        icon: FaUser,
         text: "Logout",
         content: <Logout />
     }
@@ -59,16 +70,20 @@ export default function Account() {
 
             <section className="account__settings">
                 <nav className="account__panel">
-                    {Object.entries(accountTabs).map(([key, tab]) => (
-                        <button
-                            key={key}
-                            onClick={() => setActiveTab(key as AccountTabs)}   
-                        >{tab.text}</button>
-                    ))}
+                    {Object.entries(accountTabs).map(([key, tab]) => {
+                        const Icon = tab.icon;
 
-                    {/* ----------------------------------------------- */}
-                    {/* Next finish designing button and adding content */}
-                    {/* ----------------------------------------------- */}
+                        return (
+                            <button
+                                key={key}
+                                className="account__panel-button"
+                                onClick={() => setActiveTab(key as AccountTabs)}
+                            >
+                                <Icon className="account__panel-button-icon" />
+                                <span className="account__panel-button-text">{tab.text}</span>
+                            </button>
+                        )
+                    })}
                 </nav>
 
                 <main className="account__content">

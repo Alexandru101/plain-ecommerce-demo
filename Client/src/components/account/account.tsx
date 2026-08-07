@@ -3,54 +3,55 @@ import { useState } from "react";
 import "./account.css";
 
 // Icons //
-import { FaUser } from "react-icons/fa"; 
+import { FiUser } from "react-icons/fi";
+import { FiBox } from "react-icons/fi";
 
 // Types //
 const accountTabs = {
     overview: {
-        icon: FaUser,
+        icon: FiUser,
         text: "Account Overview",
         content: <Overview />
     },
 
     orders: {
-        icon: FaUser,
+        icon: FiBox,
         text: "Orders",
         content: <NoContentTemplate />
     },
     
     wishlist: {
-        icon: FaUser,
+        icon: FiUser,
         text: "Wishlist",
         content: <NoContentTemplate />
     },
     
     addresses: {
-        icon: FaUser,
+        icon: FiUser,
         text: "Addresses",
         content: <NoContentTemplate />
     },
 
     payment: {
-        icon: FaUser,
+        icon: FiUser,
         text: "Payment Methods",
         content: <NoContentTemplate />
     },
     
     refunds: {
-        icon: FaUser,
+        icon: FiUser,
         text: "Return & Refunds",
         content: <NoContentTemplate />
     },
     
     changePassword: {
-        icon: FaUser,
+        icon: FiUser,
         text: "Change Password",
         content: <NoContentTemplate />
     },
     
     logout: {
-        icon: FaUser,
+        icon: FiUser,
         text: "Logout",
         content: <Logout />
     }

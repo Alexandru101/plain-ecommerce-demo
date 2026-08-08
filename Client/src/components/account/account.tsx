@@ -3,8 +3,9 @@ import { useState } from "react";
 import "./account.css";
 
 // Icons //
-import { FiUser } from "react-icons/fi";
-import { FiBox } from "react-icons/fi";
+import { FiUser, FiBox, FiHeart, FiLogOut } from "react-icons/fi";
+import { BiMap, BiCreditCard, BiLock } from "react-icons/bi";
+import { LuRotateCcw } from "react-icons/lu";
 
 // Types //
 const accountTabs = {
@@ -21,46 +22,44 @@ const accountTabs = {
     },
     
     wishlist: {
-        icon: FiUser,
+        icon: FiHeart,
         text: "Wishlist",
         content: <NoContentTemplate />
     },
     
     addresses: {
-        icon: FiUser,
+        icon: BiMap,
         text: "Addresses",
         content: <NoContentTemplate />
     },
 
     payment: {
-        icon: FiUser,
+        icon: BiCreditCard,
         text: "Payment Methods",
         content: <NoContentTemplate />
     },
     
     refunds: {
-        icon: FiUser,
+        icon: LuRotateCcw,
         text: "Return & Refunds",
         content: <NoContentTemplate />
     },
     
     changePassword: {
-        icon: FiUser,
+        icon: BiLock,
         text: "Change Password",
         content: <NoContentTemplate />
-    },
-    
-    logout: {
-        icon: FiUser,
-        text: "Logout",
-        content: <Logout />
     }
 };
 
 type AccountTabs = keyof typeof accountTabs;
 
 export default function Account() {
+    // State variables //
     const [activeTab, setActiveTab] = useState<AccountTabs>("overview");
+
+    // Grabbing the current active tab index within the array of accountTabs //
+    const activeIndex = Object.keys(accountTabs).indexOf(activeTab);
 
     return (
         <div className="account">
@@ -71,13 +70,20 @@ export default function Account() {
 
             <section className="account__settings">
                 <nav className="account__panel">
+                    <div 
+                        className="account__active-indicator"
+                        style={{ transform: `translateY(${activeIndex * 60}px)`}}
+                    />
+
                     {Object.entries(accountTabs).map(([key, tab]) => {
                         const Icon = tab.icon;
+                        const isActive = activeTab === key;
 
                         return (
                             <button
                                 key={key}
-                                className="account__panel-button"
+                                type="button"
+                                className={`account__panel-button ${isActive ? "account__panel-button--active" : "" }`}
                                 onClick={() => setActiveTab(key as AccountTabs)}
                             >
                                 <Icon className="account__panel-button-icon" />
@@ -85,6 +91,15 @@ export default function Account() {
                             </button>
                         )
                     })}
+
+                    <button
+                        type="button"
+                        className="account__panel-button account__panel-button--logout"
+                        onClick={() => console.log("Button Activated")}
+                    >
+                        <FiLogOut className="account__panel-button-icon" />
+                        <span className="account__panel-button-text">Logout</span>
+                    </button>
                 </nav>
 
                 <main className="account__content">
@@ -102,14 +117,8 @@ function Overview() {
     )
 };
 
-function Logout() {
-    return (
-        <div>Logout</div>
-    )
-};
-
 function NoContentTemplate() {
     return (
-        <div></div>
+        <div>Content Not Found</div>
     )
 };

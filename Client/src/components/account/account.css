@@ -125,6 +125,18 @@
     align-items: center;
 
     gap: 1.25rem;
+}
 
-    border: 1px solid #000;
+.account__section-fullbox {
+    height: 100%;
+    width: 100%;
+    
+    text-align: center;
+    align-content: center;
+
+    font-size: 2.25rem;
+    font-weight: bold;
+
+    color: black;
+    background: white;
 }

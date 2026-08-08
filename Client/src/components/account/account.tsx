@@ -119,6 +119,10 @@ function Overview() {
 
 function NoContentTemplate() {
     return (
-        <div>Content Not Found</div>
+        <div className="account__section-fullbox">Content Not Found :(</div>
     )
+
+    // -------------------------------------------------------------------------- //
+    // Next finish designing no content preview and make it compatible for mobile //
+    // -------------------------------------------------------------------------- //
 };

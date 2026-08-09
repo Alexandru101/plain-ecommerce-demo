@@ -96,6 +96,7 @@
 
 .account__panel-button-text {
     width: 10rem;
+    font-weight: 500;
     font-size: 0.9rem;
 
     display: flex;
@@ -117,14 +118,137 @@
 }
 
 .account__content {
-    flex: 3;
+    gap: 1.25rem;
+}
+
+.account__content-container {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1.25rem;
+}
+
+.account__overview {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #3f3f3f34;
+    border-radius: 5px;
+    background: #fff;
+
+    gap: 1.75rem;
+}
+
+.account__leftInfo {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.account__leftInfo-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.account__leftInfo-desc {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.account__rightInfo {
+    flex: 1;
+    display: flex;
+    padding: 2rem;
+    gap: 1.5rem;
+}
+
+.avatar {
+    height: 3.75rem;
+    width: 4.5rem;
+
+    border-radius: 50%;
+    background: #eeeeee;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #34495e;
+    font-family: Georgia, sans-serif;
+    font-size: 1.375rem;
+}
+
+.account__rightInfo-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.account__rightInfo-title {
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.account__rightInfo-desc {
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+.account__cards {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 1.75rem;
+}
+
+.account__card {
+    width: 100%;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    gap: 1.25rem;
+    border: 1px solid #3f3f3f34;
+    border-radius: 5px;
+    background: #fff;
+
+    padding: 1rem;
+    gap: 0.75rem;
+}
+
+.account__card-text {
+    font-size: 0.8rem;
+}
+
+.account__underlineText {
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.account__orders-top {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #3f3f3f34;
+
+    padding: 1rem;
 }
 
 .account__section-fullbox {

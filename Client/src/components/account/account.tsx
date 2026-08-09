@@ -4,7 +4,7 @@ import "./account.css";
 
 // Icons //
 import { FiUser, FiBox, FiHeart, FiLogOut } from "react-icons/fi";
-import { BiMap, BiCreditCard, BiLock } from "react-icons/bi";
+import { BiMap, BiCreditCard, BiLock, BiShoppingBag } from "react-icons/bi";
 import { LuRotateCcw } from "react-icons/lu";
 
 // Types //
@@ -113,7 +113,88 @@ export default function Account() {
 // Panel Sections //
 function Overview() {
     return (
-        <div>Overview</div>
+        <div className="account__content-container">
+            <section className="account__overview">
+                <div className="account__leftInfo">
+                    <h1 className="account__leftInfo-title">Account Overview</h1>
+
+                    <p className="account__leftInfo-desc">
+                        From your account dashboard, you can view your recent orders,
+                        manage your shopping and billing addresses, and edit your password
+                        and account details.
+                    </p>
+                </div>
+
+                <div className="account__rightInfo">
+                    <div className="avatar">A</div>
+
+                    <div className="account__rightInfo-container">
+                        <h1 className="account__rightInfo-title">John doe</h1>
+
+                        <p className="account__rightInfo-desc">
+                            example@gmail.com
+                        </p>
+
+                        <span className="account__underlineText">Edit Profile</span>
+                    </div>
+                </div>
+            </section>
+
+            <section className="account__cards">
+                <div className="account__card">
+                    <div className="avatar">
+                        <BiShoppingBag />
+                    </div>
+
+                    <h1>3</h1>
+                    <span className="account__card-text">Orders</span>
+                    <span className="account__underlineText">View all orders</span>
+                </div>
+
+                <div className="account__card">
+                    <div className="avatar">
+                        <FiHeart />
+                    </div>
+
+                    <h1>5</h1>
+                    <span className="account__card-text">Wishlist Items</span>
+                    <span className="account__underlineText">View Wishlist</span>
+                </div>
+
+                <div className="account__card">
+                    <div className="avatar">
+                        <BiMap />
+                    </div>
+
+                    <h1>2</h1>
+                    <span className="account__card-text">Saved Addresses</span>
+                    <span className="account__underlineText">Manage Addresses</span>
+                </div>
+
+                <div className="account__card">
+                    <div className="avatar">
+                        <BiCreditCard />
+                    </div>
+
+                    <h1>2</h1>
+                    <span className="account__card-text">Payment Methods</span>
+                    <span className="account__underlineText">Manage Payment Methods</span>
+                </div>
+            </section>
+
+            <section className="account__cards">
+                <div className="account__card">
+                    <div className="account__orders-top">
+                        <h3>Recent Orders</h3>
+                        <span className="account__underlineText">View all orders</span>
+                    </div>
+
+                    {/* ------------------------------------- */}
+                    {/* Next complete designing recent orders */}
+                    {/* ------------------------------------- */}
+                </div>
+            </section>
+        </div>
     )
 };
 

@@ -6,6 +6,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_PORT;
 function fetchApi(url: string, requestInfo: ReqInfo): Promise<Response> {
     return fetch(url, {
         method: requestInfo.method,
+        credentials: "include",
         headers: requestInfo.headers ?? { "Content-Type": "application/json" },
         body: requestInfo.body ? JSON.stringify(requestInfo.body) : undefined
     });

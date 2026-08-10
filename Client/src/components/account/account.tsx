@@ -1,5 +1,6 @@
 // Modules //
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ApiClient from "../../utils/ApiClient";
 import "./account.css";
 
 // Icons //
@@ -54,12 +55,40 @@ const accountTabs = {
 
 type AccountTabs = keyof typeof accountTabs;
 
+type UserDataResponse = {
+    success: boolean
+    message: string | null
+    userData: object | null
+};
+
+// Backend API: grabs user data if logged in //
+const BACKEND_API = `${import.meta.env.VITE_BACKEND_PORT}/api/get-userdata`;
+
 export default function Account() {
     // State variables //
     const [activeTab, setActiveTab] = useState<AccountTabs>("overview");
 
     // Grabbing the current active tab index within the array of accountTabs //
     const activeIndex = Object.keys(accountTabs).indexOf(activeTab);
+
+    // Loading user data object //
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const data = await ApiClient.get<UserDataResponse>(BACKEND_API);
+
+                if (data.success) {
+                    console.log(data.success);
+                    console.log(data.message);
+                    console.log(data.userData);
+                }
+            } catch(err) {
+                console.error(`Error fetching user data -> ${err}`);
+            }
+        };
+
+        getData();
+    }, []);
 
     return (
         <div className="account">
@@ -188,10 +217,6 @@ function Overview() {
                         <h3>Recent Orders</h3>
                         <span className="account__underlineText">View all orders</span>
                     </div>
-
-                    {/* ------------------------------------- */}
-                    {/* Next complete designing recent orders */}
-                    {/* ------------------------------------- */}
                 </div>
             </section>
         </div>

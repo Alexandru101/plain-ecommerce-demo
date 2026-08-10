@@ -11,7 +11,7 @@ import registration from "./routes/Registration.js";
 import authentication from "./routes/Authentication.js";
 import forgotPassword from "./routes/ForgotPassword.js";
 import resetPassword from "./routes/ResetPassword.js";
-import getProducts from "./routes/GetProducts.js";
+import getData from "./routes/GetData.js";
 import newsletter from "./routes/Newsletter.js";
 import test from "./routes/test.js";
 
@@ -28,7 +28,7 @@ app.use("/api", registration);
 app.use("/api", authentication);
 app.use("/api", forgotPassword);
 app.use("/api", resetPassword);
-app.use("/api", getProducts);
+app.use("/api", getData);
 app.use("/api", newsletter);
 app.use("/api", test); // Remove this in production, this is only for testing //
 

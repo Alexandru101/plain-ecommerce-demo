@@ -18,3 +18,25 @@ export const generateRefreshToken = (user) => {
         { expiresIn: "7d" } 
     )
 };
+
+export const authMiddleware = (req, res, next) => {
+    try {
+        const accessToken = req.cookies.accessToken;
+        if (!accessToken) {
+            return res.sendStatus(401);
+        }
+
+        const payload = jwt.verify(
+            accessToken,
+            process.env.JWT_ACCESS_TOKEN_SECRET
+        );
+
+        req.user = payload;
+
+        next();
+    } catch(err) {
+        console.error(err);
+
+        return res.sendStatus(401);
+    }
+};

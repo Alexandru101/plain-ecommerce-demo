@@ -56,7 +56,7 @@ export default function Login() {
                     message: "Successfully logged into account"
                 });
 
-                navigate("/home");
+                navigate("/account");
             } else {
                 emitNotification({
                     type: "alert",

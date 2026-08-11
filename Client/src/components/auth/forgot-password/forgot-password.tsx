@@ -96,7 +96,7 @@ export default function ForgotPassword() {
                     />
 
                     <div className="frc-captcha">
-                        <span ref={captchaRef}></span>
+                        <span style={{ width: "30rem" }} ref={captchaRef}></span>
                     </div>
                 </div>
 

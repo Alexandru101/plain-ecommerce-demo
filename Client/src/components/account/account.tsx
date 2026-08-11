@@ -9,11 +9,11 @@ import { BiMap, BiCreditCard, BiLock, BiShoppingBag } from "react-icons/bi";
 import { LuRotateCcw } from "react-icons/lu";
 
 // Types //
-const accountTabs = {
+const accountTabs = (userData: UserDataObject | null) => ({
     overview: {
         icon: FiUser,
         text: "Account Overview",
-        content: <Overview />
+        content: <Overview userData={userData} />
     },
 
     orders: {
@@ -51,14 +51,23 @@ const accountTabs = {
         text: "Change Password",
         content: <NoContentTemplate />
     }
-};
+});
 
-type AccountTabs = keyof typeof accountTabs;
+type AccountTabs = keyof ReturnType<typeof accountTabs>;
 
 type UserDataResponse = {
     success: boolean
     message: string | null
     userData: object | null
+};
+
+type UserDataObject = {
+    _id: string
+    email: string
+    gender: string
+    firstName: string
+    lastName: string
+    createdAt: string
 };
 
 // Backend API: grabs user data if logged in //
@@ -67,20 +76,28 @@ const BACKEND_API = `${import.meta.env.VITE_BACKEND_PORT}/api/get-userdata`;
 export default function Account() {
     // State variables //
     const [activeTab, setActiveTab] = useState<AccountTabs>("overview");
+    const [userData, setUserData] = useState<UserDataObject | null>(null);
 
-    // Grabbing the current active tab index within the array of accountTabs //
-    const activeIndex = Object.keys(accountTabs).indexOf(activeTab);
+    // Getting the "tabs" and finding the index of the current active tab
+    const tabs = accountTabs(userData);
+    const activeIndex = Object.keys(tabs).indexOf(activeTab);
 
     // Loading user data object //
     useEffect(() => {
         const getData = async () => {
             try {
-                const data = await ApiClient.get<UserDataResponse>(BACKEND_API);
+                const data = await ApiClient.get<UserDataResponse>(BACKEND_API, {});
 
-                if (data.success) {
-                    console.log(data.success);
-                    console.log(data.message);
-                    console.log(data.userData);
+                if (data.success && data.userData) {
+                    setUserData(data.userData as UserDataObject);
+
+                    // Data object --> {
+                    // _id: "6a57a96d6cd0f6a31e6b5344",
+                    // email: "alexandru_dev15@proton.me",
+                    // gender: "Male",
+                    // firstName: "uknown",
+                    // lastName: "uknown",
+                    // createdAt: "2026-07-15T15:38:21.311Z" }
                 }
             } catch(err) {
                 console.error(`Error fetching user data -> ${err}`);
@@ -90,11 +107,16 @@ export default function Account() {
         getData();
     }, []);
 
+    // Logging user out of his account //
+    const logout = async () => {
+        
+    };
+
     return (
         <div className="account">
             <header className="account__header">
                 <h1 className="account__title">My Account</h1>
-                <p className="account__description">Welcome back, user!</p>
+                <p className="account__description">Welcome back, {userData?.firstName}!</p>
             </header>
 
             <section className="account__settings">
@@ -104,7 +126,7 @@ export default function Account() {
                         style={{ transform: `translateY(${activeIndex * 60}px)`}}
                     />
 
-                    {Object.entries(accountTabs).map(([key, tab]) => {
+                    {Object.entries(tabs).map(([key, tab]) => {
                         const Icon = tab.icon;
                         const isActive = activeTab === key;
 
@@ -132,7 +154,7 @@ export default function Account() {
                 </nav>
 
                 <main className="account__content">
-                    {accountTabs[activeTab].content}
+                    {tabs[activeTab].content}
                 </main>
             </section>
         </div>
@@ -140,7 +162,7 @@ export default function Account() {
 }
 
 // Panel Sections //
-function Overview() {
+function Overview({ userData }: { userData: UserDataObject | null }) {
     return (
         <div className="account__content-container">
             <section className="account__overview">
@@ -158,10 +180,10 @@ function Overview() {
                     <div className="avatar">A</div>
 
                     <div className="account__rightInfo-container">
-                        <h1 className="account__rightInfo-title">John doe</h1>
+                        <h1 className="account__rightInfo-title">{`${userData?.firstName ?? ""} ${userData?.lastName ?? ""}`}</h1>
 
                         <p className="account__rightInfo-desc">
-                            example@gmail.com
+                            {`${userData?.email ?? "example@gmail.com"}`}
                         </p>
 
                         <span className="account__underlineText">Edit Profile</span>

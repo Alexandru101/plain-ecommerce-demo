@@ -181,7 +181,7 @@ router.post("/refresh", async (req, res) => {
             maxAge: 15 * 60 * 1000 // 15 minutes
         });
 
-        return res.status(200);
+        return res.sendStatus(200);
     } catch(err) {
         console.error(err);
 

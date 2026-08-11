@@ -118,6 +118,7 @@
 }
 
 .account__content {
+    width: 100%;
     gap: 1.25rem;
 }
 

@@ -47,6 +47,7 @@ async function POST<T>(url: string, requestInfo: ReqInfo): Promise<T> {
 async function refreshAccessToken() {
     const response = await fetch(`${BACKEND_URL}/api/refresh`, {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: undefined // Not required as the refresh token is sent via cookies
     });

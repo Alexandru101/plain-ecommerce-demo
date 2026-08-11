@@ -7,7 +7,7 @@ import jwt from "jsonwebtoken";
 // Utils //
 import { ERROR_CODES } from "../utils/ErrorCodes.js";
 import { rateLimiter } from "../utils/Redis.js";
-import { generateAccessToken, generateRefreshToken } from "../utils/Jwt.js";
+import { authMiddleware, generateAccessToken, generateRefreshToken } from "../utils/Jwt.js";
 import user from "../models/User.js";
 
 // Router //
@@ -139,6 +139,22 @@ router.post("/authentication", async (req, res) => {
             message: `Error: ${ERROR_CODES[String(err.code)] || err.message}`
         });
     }
+});
+
+router.post("/logout", authMiddleware, (req, res) => {
+    res.clearCookie("accessToken", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict"
+    });
+
+    res.clearCookie("refreshToken", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict"
+    });
+
+    res.sendStatus(200);
 });
 
 router.post("/refresh", async (req, res) => {

@@ -31,7 +31,12 @@ async function request<T>(url: string, requestInfo: ReqInfo): Promise<T> {
         throw new Error("Request failed: " + response.status + " -> " + response.statusText);
     }
 
-    return await response.json() as T;
+    const contentType = response.headers.get("content-type");
+    if (contentType?.includes("application/json")) {
+        return await response.json() as T;
+    }
+
+    return await response.text() as T;
 };
 
 // Requesting API Methods //

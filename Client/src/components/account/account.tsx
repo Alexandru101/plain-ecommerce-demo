@@ -1,5 +1,7 @@
 // Modules //
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { emitNotification } from "../../utils/Notification.tsx";
 import ApiClient from "../../utils/ApiClient";
 import "./account.css";
 
@@ -9,6 +11,21 @@ import { BiMap, BiCreditCard, BiLock, BiShoppingBag } from "react-icons/bi";
 import { LuRotateCcw } from "react-icons/lu";
 
 // Types //
+type UserDataResponse = {
+    success: boolean;
+    message: string | null;
+    userData: UserDataObject | null;
+};
+
+type UserDataObject = {
+    _id: string
+    email: string
+    gender: string
+    firstName: string
+    lastName: string
+    createdAt: string
+};
+
 const accountTabs = (userData: UserDataObject | null) => ({
     overview: {
         icon: FiUser,
@@ -55,28 +72,20 @@ const accountTabs = (userData: UserDataObject | null) => ({
 
 type AccountTabs = keyof ReturnType<typeof accountTabs>;
 
-type UserDataResponse = {
-    success: boolean
-    message: string | null
-    userData: object | null
-};
-
-type UserDataObject = {
-    _id: string
-    email: string
-    gender: string
-    firstName: string
-    lastName: string
-    createdAt: string
-};
-
 // Backend API: grabs user data if logged in //
-const BACKEND_API = `${import.meta.env.VITE_BACKEND_PORT}/api/get-userdata`;
+const USERDATA_API = `${import.meta.env.VITE_BACKEND_PORT}/api/get-userdata`;
+const LOGOUT_API = `${import.meta.env.VITE_BACKEND_PORT}/api/logout`;
 
 export default function Account() {
     // State variables //
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [confirmLogout, setConfirmLogout] = useState<boolean>(false);
+
     const [activeTab, setActiveTab] = useState<AccountTabs>("overview");
     const [userData, setUserData] = useState<UserDataObject | null>(null);
+
+    // Variables
+    const navigate = useNavigate();
 
     // Getting the "tabs" and finding the index of the current active tab
     const tabs = accountTabs(userData);
@@ -86,10 +95,10 @@ export default function Account() {
     useEffect(() => {
         const getData = async () => {
             try {
-                const data = await ApiClient.get<UserDataResponse>(BACKEND_API, {});
+                const data = await ApiClient.get<UserDataResponse>(USERDATA_API, {});
 
                 if (data.success && data.userData) {
-                    setUserData(data.userData as UserDataObject);
+                    setUserData(data.userData);
 
                     // Data object --> {
                     // _id: "6a57a96d6cd0f6a31e6b5344",
@@ -101,16 +110,34 @@ export default function Account() {
                 }
             } catch(err) {
                 console.error(`Error fetching user data -> ${err}`);
+                navigate("/login");
+            } finally {
+                setIsLoading(false);
             }
         };
 
         getData();
-    }, []);
+    }, [navigate]);
 
     // Logging user out of his account //
-    const logout = async () => {
-        
+    const logout = async (): Promise<void> => {
+        await ApiClient.post(LOGOUT_API, {});
+
+        emitNotification({
+            type: "success",
+            message: "Successfully logged out"
+        });
+
+        navigate("/home");
     };
+
+    if (isLoading) {
+        return (
+            <div className="account__loading">
+                <div className="account__loading-spinner"></div>
+            </div>
+        )
+    }
 
     return (
         <div className="account">
@@ -146,7 +173,7 @@ export default function Account() {
                     <button
                         type="button"
                         className="account__panel-button account__panel-button--logout"
-                        onClick={() => console.log("Button Activated")}
+                        onClick={() => setConfirmLogout(true)}
                     >
                         <FiLogOut className="account__panel-button-icon" />
                         <span className="account__panel-button-text">Logout</span>
@@ -157,6 +184,32 @@ export default function Account() {
                     {tabs[activeTab].content}
                 </main>
             </section>
+
+            {confirmLogout && (
+                <div className="account__logout-overlay">
+                    <div className="account__logout-modal">
+                        <h2>Are you sure you want to logout?</h2>
+
+                        <div className="account__logout-actions">
+                            <button
+                                type="button"
+                                className="account__logout-buttons"
+                                onClick={logout}
+                            >
+                                Confirm
+                            </button>
+                            
+                            <button
+                                type="button"
+                                className="account__logout-buttons"
+                                onClick={() => setConfirmLogout(false)}
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
@@ -177,7 +230,9 @@ function Overview({ userData }: { userData: UserDataObject | null }) {
                 </div>
 
                 <div className="account__rightInfo">
-                    <div className="avatar">A</div>
+                    <div className="avatar">
+                        {userData?.firstName.charAt(0).toUpperCase()}
+                    </div>
 
                     <div className="account__rightInfo-container">
                         <h1 className="account__rightInfo-title">{`${userData?.firstName ?? ""} ${userData?.lastName ?? ""}`}</h1>

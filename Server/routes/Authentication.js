@@ -115,7 +115,7 @@ router.post("/authentication", async (req, res) => {
         res.cookie("accessToken", accessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
+            sameSite: "none",
             maxAge: 15 * 60 * 1000 // 15 minutes
         });
 
@@ -123,7 +123,7 @@ router.post("/authentication", async (req, res) => {
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
+            sameSite: "none",
             maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
         });
 
@@ -145,13 +145,13 @@ router.post("/logout", authMiddleware, (req, res) => {
     res.clearCookie("accessToken", {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "strict"
+        sameSite: "none"
     });
 
     res.clearCookie("refreshToken", {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "strict"
+        sameSite: "none"
     });
 
     res.sendStatus(200);
@@ -193,7 +193,7 @@ router.post("/refresh", async (req, res) => {
         res.cookie("accessToken", newAccessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
+            sameSite: "none",
             maxAge: 15 * 60 * 1000 // 15 minutes
         });
 

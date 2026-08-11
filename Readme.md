@@ -2,7 +2,7 @@
 1. ping this url and wait for it to succeed - https://plain-ecommerce-demo-backend.onrender.com/api/test
 2. Open the website --> [Website](https://plain-ecommerce-demo.alexandru-dev15.workers.dev/home)
 
--- All changes including code updates and maintenance were published using git --
+> **Version Control:** All code changes, updates, and maintenance were managed using Git.
 
 ### Pros 🟢
 1. JWT Authentication - Includes account login/logout + signup, uses static http-only access and refresh

@@ -24,6 +24,10 @@ has signed up to the newsletter is not a bot, once the user verifies he will the
 the ability to unsubscribe ultimately this creates a token using "crypto" like we have been using for the subscribe and verifiy functions, then
 calling the backend api "BACKEND_URL/api/newsletter-unsubscribe" that will delete the users document from the mongoDB collection.
 
-5. Deployment - Frontend Cloudfare Pages / Backend Render. using enviroment variables I was able to create an enviroment
+6. Custom Notification - coming soon ...
+
+7. Deployment - Frontend Cloudfare Pages / Backend Render. using enviroment variables I was able to create an enviroment
 where I can test locally on my computer and once verified I can push changes to github which will then cause cloudfare
 pages and render to auto detect the change and redeploy with the latest changes.
+
+### Cons 🔴

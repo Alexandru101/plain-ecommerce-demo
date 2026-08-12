@@ -52,7 +52,7 @@ it wouldnt of been inconsistent).
 understanding of css however I did learn that you can use "@media" which allows for the use of conditional styling so I can check the current width of
 the user then apply the css I want depending on their width. During the start of this project I also had css files that were just using "px" which I believe
 to not be ideal and tried to implement "rem" instead of "px" towards the end of my project which should scale better with the width of the website changing
-however this does not automatically make it compatible for mobile and I should of used a response web layout where I use "@media" and build the website
+however this does not automatically make it compatible for mobile and I should of used a responsive web layout where I use "@media" and build the website
 on mobile view first then desktop.
 
 ### Things I would of done better

@@ -1,3 +1,6 @@
+<img width="1837" height="923" alt="image" src="https://github.com/user-attachments/assets/4deb35a2-df33-47fc-ab19-87b12c3494e8" />
+
+
 > **Version Control:** All code changes, updates, and maintenance were managed using Git.
 
 ## Testing website steps

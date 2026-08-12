@@ -66,6 +66,7 @@ to log into the users account before it expires within 7 days.
 
 ### Extra information
 <u>**if you wish to view latest css file check**</u> -> "Client -> src -> components -> account -> account.css or account.tsx".
+
 <u>**if you wish to view older css files check**</u> -> "Client -> src -> components -> home -> home.css or home.tsx".
 
 Note. all text within "readme.md" and code within project was written by me, any use of "AI" was used to validate code and give me feedback on things

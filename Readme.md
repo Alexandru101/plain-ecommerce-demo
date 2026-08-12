@@ -1,5 +1,3 @@
-> **Version Control:** All code changes, updates, and maintenance were managed using Git.
-
 **Minimalistic UI:** Designed with a simple, modern interface focused on usability
 <img width="1837" height="923" alt="image" src="https://github.com/user-attachments/assets/4deb35a2-df33-47fc-ab19-87b12c3494e8" />
 
@@ -77,3 +75,5 @@ that I was stuck following this learning format -> build first independently the
 use "AI" to get information and check youtube + documents. Once "AI" would validate my code I would read and understand where I would go wrong then
 apply changes to fix code, bugs or help me with debugging but when debugging I generally try to avoid "AI" however if I spend too long debugging or have little
 knowledge on what am working with then "AI" would be used to help.
+
+> **Version Control:** All code changes, updates, and maintenance were managed using Git.

@@ -5,7 +5,7 @@
 2. Open the website --> [Website](https://plain-ecommerce-demo.alexandru-dev15.workers.dev/home)
 
 ### Pros 🟢
-1. JWT Authentication - Includes account login/logout + signup, uses static http-only access and refresh
+1. <u>JWT Authentication</u> - Includes account login/logout + signup, uses static http-only access and refresh
 token, lastly uses a function named "authMiddleware" which validates if the users jwt token is valid
 and decodes it using jwt to get the users ID within mongodb and stores it within the apis req.user.
 Note the "authMiddleware" only is applied to the api's that require the user to be logged.

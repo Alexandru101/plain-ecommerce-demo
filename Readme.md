@@ -14,17 +14,17 @@ Note the "authMiddleware" only is applied to the api's that require the user to 
 we first lookup if the data we are requiring exists withing redis if not it then misses and queries the database
 once we query the database we store this within redis for the next request and give the user the requested data.
 
-3. Redis Rate Limiting - All api's are protected with redis rate limiting which checks the users IP and if they
+3. <u>**Redis Rate Limiting**</u> - All api's are protected with redis rate limiting which checks the users IP and if they
 are calling the api more than the maxmimum requests limit given to them, then any more requests will get dropped
 and ignored until their requests are replenished after the cooldown.
 
-4. Newsletter Subscribe / UnSubscribe - By using mongoDB and resend I was able to create a collection on mongoDB that contains all the documents
+4. <u>**Newsletter Subscribe / UnSubscribe**</U> - By using mongoDB and resend I was able to create a collection on mongoDB that contains all the documents
 of users that have signed up to the newsletter then creating temporary tokens for security to verify if the user that
 has signed up to the newsletter is not a bot, once the user verifies he will then recieve another email which will demonstrate
 the ability to unsubscribe ultimately this creates a token using "crypto" like we have been using for the subscribe and verifiy functions, then
 calling the backend api "BACKEND_URL/api/newsletter-unsubscribe" that will delete the users document from the mongoDB collection.
 
-6. Custom Notification - First I created a class that handles all ui notification logic from creating a notification to waiting
+6. <u>**Custom Notification**</u> - First I created a class that handles all ui notification logic from creating a notification to waiting
 for it to finish and giving it closing animations. Notifications are setup within the file "App.tsx" which mounts a notification listener
 that will basically detect once we call the notification event from other files meaning once we call this event the notification event listener
 will trigger and create a notification using the notification class, by using a function named "emitNotification" we can make this job even
@@ -33,12 +33,12 @@ rather than render the notification every refresh or whenever called is so that 
 mount once when the "App.tsx" file loads the content and react router, ultimately this means we mount the connection once and can just call
 the notification via event whenever needed making it super simple to use and scale.
 
-7. Deployment - Frontend Cloudfare Pages / Backend Render. using enviroment variables I was able to create an enviroment
+7. <u>**Deployment**</u> - Frontend Cloudfare Pages / Backend Render. using enviroment variables I was able to create an enviroment
 where I can test locally on my computer and once verified I can push changes to github which will then cause cloudfare
 pages and render to auto detect the change and redeploy with the latest changes.
 
 ### Cons 🔴
-1. Inconsistent Code Design - During the creation of this project I was still relatively new to css as I understood how to design basic features
+1. <u>**Inconsistent Code Design**</u> - During the creation of this project I was still relatively new to css as I understood how to design basic features
 and full pages however I did not learn and adapt any design coding patterns therefore causing inconsistency in my html + css. Towards the end of
 the project I started adapting to using the correct html elements such as "main" or "nav", I also started using BEM names for my css classes
 which follows the format of "`NAME_OF_FILE`__COMPONENT" and example of this is "account__panel" then if necessary we can create a css tree by doing

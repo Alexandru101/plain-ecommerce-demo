@@ -65,7 +65,8 @@ to log into the users account before it expires within 7 days.
 
 - Follow css code patterns and elimanate inconsistencies.
 - Design the website for mobile first then desktop make it compatibly for both.
-- Start looking into peformance optimizations and avoiding unnecessary code eg using "kiss" principle -> "Keep it super simple"
+- Start looking into peformance optimizations and avoiding unnecessary code eg using "kiss" principle -> "Keep it super simple".
+- Using typescript for backend instead of plain JavaScript as I dont get type safety with JavaScript.
 
 ### Extra information
 <u>**if you wish to view latest css file check**</u> -> "Client -> src -> components -> account -> account.css or account.tsx".

@@ -65,9 +65,11 @@ to log into the users account before it expires within 7 days.
 - Start looking into peformance optimizations and avoiding unnecessary code eg using "kiss" principle -> "Keep it super simple"
 
 ### Extra information
-if you wish to view latest css file check -> "Client -> src -> components -> account -> account.css or account.tsx"
-if you wish to view older css files check -> "Client -> src -> components -> home -> home.css or home.tsx"
+<u>**if you wish to view latest css file check**</u> -> "Client -> src -> components -> account -> account.css or account.tsx".
 
-Note. all text within "readme.md" and code within project was written by me, use of "AI" was used to validate code and give me information on things
-that I was stuck following this learning format -> build first independant then validate with "AI" if I was stuck or learning a new topic I would
-use "AI" to get information and check youtube + documents.
+<u>**if you wish to view older css files check**</u> -> "Client -> src -> components -> home -> home.css or home.tsx".
+
+Note. all text within "readme.md" and code within project was written by me, any use of "AI" was used to validate code and give me information on things
+that I was stuck following this learning format -> build first independently then validate with "AI" if I was stuck or learning a new topic I would
+use "AI" to get information and check youtube + documents. Once "AI" would validate my code I would read and understand where I would go wrong then
+apply changes to fix code, bugs or help me with debugging but when debugging I generally try to avoid "AI" and find where I would go wrong.

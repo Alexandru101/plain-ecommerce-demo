@@ -1,6 +1,6 @@
 > **Version Control:** All code changes, updates, and maintenance were managed using Git.
 
-> Minimalistic UI
+**Minimalistic UI:** Designed with a simple, modern interface focused on usability
 <img width="1837" height="923" alt="image" src="https://github.com/user-attachments/assets/4deb35a2-df33-47fc-ab19-87b12c3494e8" />
 
 ## Testing website steps

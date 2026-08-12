@@ -63,3 +63,11 @@ to log into the users account before it expires within 7 days.
 - Follow css code patterns and elimanate inconsistencies.
 - Design the website for mobile first then desktop make it compatibly for both.
 - Start looking into peformance optimizations and avoiding unnecessary code eg using "kiss" principle -> "Keep it super simple"
+
+### Extra information
+if you wish to view latest css file check -> "Client -> src -> components -> account -> account.css or account.tsx"
+if you wish to view older css files check -> "Client -> src -> components -> home -> home.css or home.tsx"
+
+Note. all text within "readme.md" and code within project was written by me, use of "AI" was used to validate code and give me information on things
+that I was stuck following this learning format -> build first independant then validate with "AI" if I was stuck or learning a new topic I would
+use "AI" to get information and check youtube + documents.

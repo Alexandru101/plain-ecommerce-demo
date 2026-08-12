@@ -47,3 +47,19 @@ but if not ideal I will always revert back to using the "-" to create a tree. I 
 new to me for example returning the response on the end of the try block incase I ever extended the api and added code outside of the try block or
 keeping all the api's within the same file if they are related (Note. I did adapt this towards the end of my project but if I had done it from the start
 it wouldnt of been inconsistent).
+
+2. <u>**Mobile Incompatibility**</u> - Making a website compatible both for desktop and mobile is still pretty difficult for me as I am dont have a deep
+understanding of css however I did learn that you can use "@media" which allows for the use of conditional styling so I can check the current width of
+the user then apply the css I want depending on their width. During the start of this project I also had css files that were just using "px" which I believe
+to not be ideal and tried to implement "rem" instead of "px" towards the end of my project which should scale better with the width of the website changing
+however this does not automatically make it compatible for mobile and I should of used a response web layout where I use "@media" and build the website
+on mobile view first then desktop.
+
+### Things I would of done better
+- Tracking the jwt access and refresh authentication tokens within the database so that if the user logs out of his account I can delete them therefore
+making the approach more hybrid and removing that security flaw of having the tokens stateless which allows any user that has stolen a refresh token
+to log into the users account before it expires within 7 days.
+
+- Follow css code patterns and elimanate inconsistencies.
+- Design the website for mobile first then desktop make it compatibly for both.
+- Start looking into peformance optimizations and avoiding unnecessary code eg using "kiss" principle -> "Keep it super simple"

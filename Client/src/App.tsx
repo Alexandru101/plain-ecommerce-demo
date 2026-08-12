@@ -26,6 +26,7 @@ import ResetPassword from "./components/auth/reset-password/reset.password.tsx";
 // Components/newsletter //
 import NewsletterEmailVerification from "./components/newsletter/email-verification.tsx";
 
+// Setting up notification event listener //
 function NotificationListener() {
   useEffect(() => {
     const handler = (args: any) => {

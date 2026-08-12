@@ -24,7 +24,14 @@ has signed up to the newsletter is not a bot, once the user verifies he will the
 the ability to unsubscribe ultimately this creates a token using "crypto" like we have been using for the subscribe and verifiy functions, then
 calling the backend api "BACKEND_URL/api/newsletter-unsubscribe" that will delete the users document from the mongoDB collection.
 
-6. Custom Notification - coming soon ...
+6. Custom Notification - First I created a class that handles all ui notification logic from creating a notification to waiting
+for it to finish and giving it closing animations. Notifications are setup within the file "App.tsx" which mounts a notification listener
+that will basically detect once we call the notification event from other files meaning once we call this event the notification event listener
+will trigger and create a notification using the notification class, by using a function named "emitNotification" we can make this job even
+easier as it will dispatch the event for us and we dont need to remmeber the notification event name. The reason I chose to use an event
+rather than render the notification every refresh or whenever called is so that I can have only one notification object created that will
+mount once when the "App.tsx" file loads the content and react router, ultimately this means we mount the connection once and can just call
+the notification via event whenever needed making it super simple to use and scale.
 
 7. Deployment - Frontend Cloudfare Pages / Backend Render. using enviroment variables I was able to create an enviroment
 where I can test locally on my computer and once verified I can push changes to github which will then cause cloudfare

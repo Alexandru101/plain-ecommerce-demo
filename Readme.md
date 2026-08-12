@@ -44,7 +44,7 @@ the project I started adapting to using the correct html elements such as "main"
 which follows the format of "`NAME_OF_FILE`__COMPONENT" and example of this is "account__panel" then if necessary we can create a css tree by doing
 "account__panel-content", generally I try to avoid creating tree classes and reset back to file name at the start with adding the component at the end
 but if not ideal I will always revert back to using the "-" to create a tree. I also had some inconsistencies with my backend as that was still farily
-new to me for example returning the response on the end of the try block incase I ever extended the api and added code outside of the try block or
+new to me for example returning the response on the end of the try block incase I ever extended the api and add code outside of the try block or
 keeping all the api's within the same file if they are related (Note. I did adapt this towards the end of my project but if I had done it from the start
 it wouldnt of been inconsistent).
 
